@@ -1,7 +1,8 @@
 <script>
 	import Header from './layout/Header.svelte';
+	import Main from './layout/Main.svelte';
 </script>
 
 <Header />
-<main>Hello Main</main>
+<Main></Main>
 <footer>Hello Footer</footer>

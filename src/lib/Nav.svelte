@@ -1,5 +1,5 @@
 <script>
-
+  import Button from './Button.svelte';
 </script>
 
 <nav class="nav">
@@ -9,10 +9,7 @@
   <div class="links-box">
     <ul class="links">
       <li class="link">
-        ✚ Add Expense
-      </li>
-      <li class="link">
-        <a href="/about">About</a>
+        <Button text='✚ Add Expense' onClick={() => console.log('clicked')} />
       </li>
     </ul>
   </div>
@@ -62,12 +59,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5rem;
     cursor: pointer;
-    transition: transform .15s ease-out;
-  }
-
-  .link:hover {
-    transform: scale(.95);
   }
 </style>
