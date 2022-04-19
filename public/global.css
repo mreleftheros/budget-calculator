@@ -1,0 +1,35 @@
+:root {
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  display: grid;
+  grid-template-rows: minmax(5rem, auto) 1fr minmax(3rem, auto);
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to top right,
+    rgb(255, 201, 99),
+    rgb(28, 171, 171)
+  );
+  color: #111;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+ul {
+  list-style-type: none;
+}
