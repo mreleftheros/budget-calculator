@@ -9,14 +9,14 @@
 <style>
   .btn {
     background: none;
-    padding: 1rem 3rem;
+    padding: .5rem 1.5rem;
     border: solid #fcce29;
     font-size: 1.5rem;
     border-radius: .5rem;
     cursor: pointer;
     transition: transform .15s ease-in-out;
     color: #fcce29;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-shadow: 0 0 1px #111;
   }
 
