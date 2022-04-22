@@ -17,7 +17,6 @@
     transition: transform .15s ease-in-out;
     color: #fcce29;
     font-size: 1.8rem;
-    text-shadow: 0 0 1px #111;
   }
 
   .btn:hover {

@@ -17,7 +17,7 @@
 
   .text {
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-style: italic;
     user-select: none;
   }
