@@ -2,32 +2,18 @@
 	import Header from './layout/Header.svelte';
 	import Main from './layout/Main.svelte';
 	import Footer from './layout/Footer.svelte';
+	import Expenses from './lib/Expenses.svelte';
 	import data from './data';
-	import { onMount } from 'svelte';
 
-	let expenses = [...data];
-	$: totalExpenses = expenses.length;
-	$: id = totalExpenses === 0 ? 0 : Math.max(...expenses.map(e => e.id)) + 1;
+	let expenses = data.map((e, i) => ({...e, id: i}));
+	$: expenseLen = expenses.length;
+	$: expenseTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
+	$: id = expenseLen === 0 ? 0 : Math.max(...expenses.map(e => e.id)) + 1;
 
-	const addExpense = (text, amount) => {
-		return expenses = [{text, amount, id}, ...expenses];
-	};
-
-	onMount(() => {
-		expenses = expenses.map((e, i) => ({...e, id: i}));
-	});
-
+	const addExpense = (text, amount) => expenses = [{text, amount, id}, ...expenses];
 </script>
 <Header />
 <Main>
-	<h2>Total Expenses {totalExpenses}</h2>
-	{#each expenses as {text, amount} (text)}
-		<div>
-			<h2>{text}</h2>
-			<p>Price: ${amount}</p>
-		</div>
-	{:else}
-		<p>No expenses</p>
-	{/each}
+	<Expenses {expenses} {expenseLen} {expenseTotal} />
 </Main>
 <Footer />
