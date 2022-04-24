@@ -1,25 +1,32 @@
 <script>
-  export let type = 'button', text = '', onClick = null;
+  export let type = 'button', text = '', disabled = false, onClick = null;
 </script>
 
-<button {type} class="btn" on:click={onClick}>
+<button {type} class="btn" {disabled} on:click={onClick}>
   {text}
 </button>
 
 <style>
   .btn {
     background: none;
-    padding: .5rem 1.5rem;
-    border: solid #fcce29;
-    font-size: 1.5rem;
+    padding: 1rem 2.5rem;
+    border: 0;
+    font-size: 2rem;
     border-radius: .5rem;
     cursor: pointer;
-    transition: transform .15s ease-in-out;
-    color: #fcce29;
+    transition: opacity .15s ease;
+    background-color: #fcce29;
     font-size: 1.8rem;
+    width: 100%;
+    color: #fff;
   }
 
   .btn:hover {
-    transform: scale(.95);
+    opacity: .9;
+  }
+
+  .btn:disabled {
+    background-color: #fee795;
+    cursor: auto;
   }
 </style>

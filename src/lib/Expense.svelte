@@ -4,7 +4,7 @@
   import { getContext } from 'svelte';
   import { slide, scale } from 'svelte/transition';
 
-  const { addExpense, deleteExpense } = getContext('state');
+  const { addExpense, deleteExpense, editExpense } = getContext('state');
   let amountShow = false;
 
   const toggleShow = () => {
@@ -25,7 +25,7 @@
       </button>
     </div>
     <div class="btns">
-      <button class="edit btn">✎</button>
+      <button class="edit btn" on:click={() => editExpense(id, text, amount)}>✎</button>
       <button class="trash btn" on:click={() => deleteExpense(id)}>🗑</button>
     </div>
   </div>
