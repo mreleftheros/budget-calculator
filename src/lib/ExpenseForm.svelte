@@ -5,7 +5,7 @@
   import { getContext } from 'svelte';
   import Button from './Button.svelte';
 
-  let { addExpense, editExpense, cancelEditExpense } = getContext('state');
+  let { addExpense, editExpense, cancelEditExpense, updateExpense } = getContext('state');
   let inputRef;
   $: selectInput(id);
   $: if (id === null) {
@@ -50,7 +50,7 @@
   </div>
   {#if id || id === 0}
     <div class="btns">
-      <Button disabled={!text || amount <= 0} text='Save' />
+      <Button disabled={!text || amount <= 0} text='Save' onClick={() => updateExpense(text, amount)} />
       <Button text='Cancel' onClick={cancelEditExpense} />
     </div>
   {:else}

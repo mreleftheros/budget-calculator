@@ -6,6 +6,7 @@
 	import ExpenseForm from './lib/ExpenseForm.svelte';
 	import { setContext } from 'svelte';
 	import data from './data';
+import { text } from 'svelte/internal';
 
 	let expenses = data.map((e, i) => ({...e, id: i}));
 	let edit = null;
@@ -22,13 +23,21 @@
 
 	const cancelEditExpense = () => edit = null;
 
+	const updateExpense = (text, amount) => {
+		const i = expenses.findIndex(e => e.id === edit.id);
+		expenses[i] = {...expenses[i], text, amount};
+
+		return cancelEditExpense();
+	}
+
 	const clearExpenses = () => expenses = [];
 
 	setContext('state', {
 		addExpense,
 		deleteExpense,
 		editExpense,
-		cancelEditExpense
+		cancelEditExpense,
+		updateExpense
 	});
 </script>
 <Header />
