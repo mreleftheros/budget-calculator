@@ -1,8 +1,10 @@
 <script>
   export let id = 0, text = '', amount = 0;
 
-  import { slide } from 'svelte/transition';
+  import { getContext } from 'svelte';
+  import { slide, scale } from 'svelte/transition';
 
+  const { addExpense, deleteExpense } = getContext('state');
   let amountShow = false;
 
   const toggleShow = () => {
@@ -10,7 +12,7 @@
   };
 </script>
 
-<li class="item">
+<li class="item" transition:scale>
   <div class="content">
     <div class="box">
       <h2 class="text">{text}</h2>
@@ -24,7 +26,7 @@
     </div>
     <div class="btns">
       <button class="edit btn">✎</button>
-      <button class="trash btn">🗑</button>
+      <button class="trash btn" on:click={() => deleteExpense(id)}>🗑</button>
     </div>
   </div>
   {#if amountShow}
@@ -37,7 +39,7 @@
     width: 100%;
     margin: 1rem 0;
     background-color: rgba(0, 0, 0, .1);
-    padding: .5rem;
+    padding: 1rem;
     border-radius: .5rem;
   }
 
@@ -49,7 +51,6 @@
   .box {
     flex: 1;
     display: flex;
-    justify-content: center;
     align-items: center;
   }
 
@@ -65,7 +66,12 @@
     cursor: pointer;
     background-color: transparent;
     transform: translateY(-.3rem);
-    color: navy;
+    color: darkcyan;
+    transition: opacity .15s ease;
+  }
+
+  .arrow:hover {
+    opacity: .5;
   }
 
   .btns {
@@ -86,5 +92,10 @@
     height: 3rem;
     cursor: pointer;
     background-color: transparent;
+    transition: opacity .15s ease;
+  }
+
+  .btn:hover {
+    opacity: .5;
   }
 </style>
