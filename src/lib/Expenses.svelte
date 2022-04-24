@@ -2,6 +2,7 @@
   export let expenses = [], expenseLen = 0, expenseTotal = 0, expenseExists = false, onClear;
 
   import Expense from './Expense.svelte';
+  import Button from './Button.svelte';
 </script>
 
 <ul class="expenses">
@@ -12,9 +13,7 @@
   {:else}
     <p class="para">No expenses</p>
   {/each}
-  <button disabled={!expenseExists} class="btn" on:click={onClear}>
-    Clear Expenses
-  </button>
+  <Button disabled={!expenseExists} onClick={onClear} text='Clear Expenses' />
 </ul>
 
 <style>
@@ -44,23 +43,5 @@
   .para {
     font-size: 2.5rem;
     text-align: center;
-  }
-
-  .btn {
-    display: block;
-    border: 0;
-    background-color: dodgerblue;
-    padding: 1rem 2rem;
-    font-size: 2.5rem;
-    color: #fff;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .btn:disabled {
-    background-color: rgb(153, 204, 255);
-    cursor: auto;
   }
 </style>

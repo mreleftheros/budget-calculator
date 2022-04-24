@@ -12,12 +12,14 @@
     text = '';
     amount = '';
   }
+  $: isValid = text && text.length > 0 && !isNaN(+amount) && amount > 0 
 
   const handleSubmit = async () => {
     if (id || id === 0) {
       return editExpense(id, text, amount);
     } else {
-      addExpense(text, amount);
+      addExpense(text, amount)
+      selectInput(id);
     }
     text = '';
     amount = 0;
@@ -50,11 +52,11 @@
   </div>
   {#if id || id === 0}
     <div class="btns">
-      <Button disabled={!text || amount <= 0} text='Save' onClick={() => updateExpense(text, amount)} />
+      <Button disabled={!isValid} text='Save' onClick={() => updateExpense(text, amount)} />
       <Button text='Cancel' onClick={cancelEditExpense} />
     </div>
   {:else}
-    <Button type='submit' disabled={!text || amount <= 0} text='Add' />
+    <Button type='submit' disabled={!isValid} text='Add' />
   {/if}
 </form>
 

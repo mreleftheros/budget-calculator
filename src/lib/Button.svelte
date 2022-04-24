@@ -2,7 +2,7 @@
   export let type = 'button', text = '', disabled = false, onClick = null;
 </script>
 
-<button {type} class="btn" {disabled} on:click={onClick}>
+<button {type} class="btn" class:disabled {disabled} on:click={onClick}>
   {text}
 </button>
 
@@ -25,7 +25,7 @@
     opacity: .9;
   }
 
-  .btn:disabled {
+  .disabled {
     background-color: #fee795;
     cursor: auto;
   }
