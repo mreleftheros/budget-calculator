@@ -4,11 +4,13 @@
 	import Footer from './layout/Footer.svelte';
 	import Expenses from './lib/Expenses.svelte';
 	import ExpenseForm from './lib/ExpenseForm.svelte';
+	import Modal from './lib/Modal.svelte';
 	import { setContext } from 'svelte';
 	import { getStorageExpenses, setStorageExpenses } from './storage';
 
 	let expenses = getStorageExpenses();
 	let edit = null;
+	let modalShow = true;
 	$: expenseLen = expenses.length;
 	$: expenseExists = expenseLen > 0;
 	$: expenseTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
@@ -33,6 +35,8 @@
 
 	const clearExpenses = () => expenses = [];
 
+	const closeModal = () => modalShow = false;
+
 	setContext('state', {
 		addExpense,
 		deleteExpense,
@@ -43,18 +47,11 @@
 </script>
 <Header />
 <Main>
-	<div class="box">
-		<ExpenseForm {...edit} />
-	</div>
 	<Expenses {expenses} {expenseLen} {expenseTotal} {expenseExists} onClear={clearExpenses} />
 </Main>
 <Footer />
-
-<style>
-	.box {
-		max-width: 60rem;
-		margin: 1rem auto;
-		background-color: #fff;
-		padding: 1rem;
-	}
-</style>
+{#if modalShow}
+	<Modal onCloseModal={closeModal}>
+		<ExpenseForm {...edit} />
+	</Modal>
+{/if}
