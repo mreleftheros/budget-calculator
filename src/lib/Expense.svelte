@@ -2,7 +2,7 @@
   export let id = 0, text = '', amount = 0;
 
   import { getContext } from 'svelte';
-  import { slide, scale } from 'svelte/transition';
+  import { slide } from 'svelte/transition';
 
   const { addExpense, deleteExpense, editExpense } = getContext('state');
   let amountShow = false;
@@ -12,7 +12,7 @@
   };
 </script>
 
-<li class="item" transition:scale>
+<li class="item">
   <div class="content">
     <div class="box">
       <h2 class="text">{text}</h2>

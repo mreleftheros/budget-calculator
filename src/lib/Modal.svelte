@@ -1,9 +1,11 @@
 <script>
   export let onClose;
+
+  import { fly, fade } from 'svelte/transition';
 </script>
 
-<div class="box" on:click|self={onClose}>
-  <div class="modal">
+<div class="box" on:click|self={onClose} transition:fade>
+  <div class="modal" transition:fly={{y: 200}}>
     <slot />
     <button class="close" on:click={onClose}>X</button>
   </div>
