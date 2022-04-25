@@ -2,7 +2,7 @@
   import Button from './Button.svelte';
   import { getContext } from 'svelte';
 
-  const { openModal } = getContext('state');
+  const { openForm } = getContext('state');
 </script>
 
 <nav class="nav">
@@ -12,7 +12,7 @@
   <div class="links-box">
     <ul class="links">
       <li class="link">
-        <Button text='✚ Add Expense' onClick={openModal} />
+        <Button text='✚ Add Expense' onClick={openForm} />
       </li>
     </ul>
   </div>

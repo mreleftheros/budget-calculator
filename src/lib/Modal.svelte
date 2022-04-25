@@ -1,11 +1,11 @@
 <script>
-  export let onCloseModal;
+  export let onClose;
 </script>
 
-<div class="box" on:click|self={onCloseModal}>
+<div class="box" on:click|self={onClose}>
   <div class="modal">
     <slot />
-    <button class="close" on:click={onCloseModal}>X</button>
+    <button class="close" on:click={onClose}>X</button>
   </div>
 </div>
 

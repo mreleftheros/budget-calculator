@@ -10,15 +10,15 @@
 
 	let expenses = getStorageExpenses();
 	let edit = null;
-	let modalShow = true;
+	let formShow = true;
 	$: expenseLen = expenses.length;
 	$: expenseExists = expenseLen > 0;
 	$: expenseTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
 	$: id = expenseLen === 0 ? 0 : Math.max(...expenses.map(e => e.id)) + 1;
 	$: if (edit) {
-		openModal();
+		openForm();
 	} else {
-		closeModal();
+		closeForm();
 	}
 	$: setStorageExpenses(expenses);
 
@@ -39,9 +39,9 @@
 
 	const clearExpenses = () => expenses = [];
 
-	const openModal = () => modalShow = true;
+	const openForm = () => formShow = true;
 
-	const closeModal = () => modalShow = false;
+	const closeForm = () => formShow = false;
 
 	setContext('state', {
 		addExpense,
@@ -49,8 +49,8 @@
 		editExpense,
 		cancelEditExpense,
 		updateExpense,
-		openModal,
-		closeModal
+		openForm,
+		closeForm
 	});
 </script>
 <Header />
@@ -58,8 +58,8 @@
 	<Expenses {expenses} {expenseLen} {expenseTotal} {expenseExists} onClear={clearExpenses} />
 </Main>
 <Footer />
-{#if modalShow}
-	<Modal onCloseModal={closeModal}>
+{#if formShow}
+	<Modal onClose={closeForm}>
 		<ExpenseForm {...edit} />
 	</Modal>
 {/if}
