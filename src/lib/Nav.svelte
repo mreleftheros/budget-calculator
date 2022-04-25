@@ -7,7 +7,7 @@
 
 <nav class="nav">
   <div class="logo-box">
-    <a href="/" class="logo"><span class="letter">฿</span>udget Calculator</a>
+    <h2 class="logo"><span class="letter">฿</span>udget Calculator</h2>
   </div>
   <div class="links-box">
     <ul class="links">
@@ -40,10 +40,6 @@
 
   .letter {
     font-size: 2.5rem;;
-  }
-
-  .logo:hover {
-    opacity: .5;
   }
 
   .links-box {
