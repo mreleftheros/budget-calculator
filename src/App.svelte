@@ -5,15 +5,16 @@
 	import Expenses from './lib/Expenses.svelte';
 	import ExpenseForm from './lib/ExpenseForm.svelte';
 	import { setContext } from 'svelte';
-	import data from './data';
-import { text } from 'svelte/internal';
+	import { getStorageExpenses, setStorageExpenses } from './storage';
 
-	let expenses = data.map((e, i) => ({...e, id: i}));
+	let expenses = getStorageExpenses();
 	let edit = null;
 	$: expenseLen = expenses.length;
 	$: expenseExists = expenseLen > 0;
 	$: expenseTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
 	$: id = expenseLen === 0 ? 0 : Math.max(...expenses.map(e => e.id)) + 1;
+	$: edit && window.scrollTo(0, 0);
+	$: setStorageExpenses(expenses);
 
 	const addExpense = (text, amount) => expenses = [{text, amount, id}, ...expenses];
 

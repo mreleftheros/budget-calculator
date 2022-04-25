@@ -11,7 +11,7 @@
   {#each expenses as expense (expense.id)}
     <Expense {...expense} />
   {:else}
-    <p class="para">No expenses</p>
+    <p class="para">No expenses...</p>
   {/each}
   <Button disabled={!expenseExists} onClick={onClear} text='Clear Expenses' />
 </ul>
@@ -43,5 +43,6 @@
   .para {
     font-size: 2.5rem;
     text-align: center;
+    margin: 2rem 0;
   }
 </style>

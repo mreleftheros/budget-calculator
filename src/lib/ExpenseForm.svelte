@@ -30,7 +30,7 @@
   onMount(() => inputRef.select());
 </script>
 
-<form class="form" on:submit|preventDefault={handleSubmit}>
+<form class="form" autocomplete='off' on:submit|preventDefault={handleSubmit}>
   <h2 class="title">
     {#if id || id === 0}
       Edit Expense

@@ -19,8 +19,8 @@ body {
   min-height: 100vh;
   background-image: linear-gradient(
     to top right,
-    rgb(255, 201, 99),
-    rgb(28, 171, 171)
+    rgb(99, 255, 138),
+    rgb(33, 127, 209)
   );
   color: #111;
 }

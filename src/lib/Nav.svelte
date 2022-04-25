@@ -9,7 +9,7 @@
   <div class="links-box">
     <ul class="links">
       <li class="link">
-        <Button text='✚ Add Expense' onClick={() => console.log('clicked')} />
+        <Button text='✚ Add Expense' onClick={null} />
       </li>
     </ul>
   </div>
