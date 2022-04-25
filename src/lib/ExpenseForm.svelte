@@ -5,7 +5,7 @@
   import { getContext } from 'svelte';
   import Button from './Button.svelte';
 
-  let { addExpense, editExpense, cancelEditExpense, updateExpense } = getContext('state');
+  let { addExpense, editExpense, cancelEditExpense, updateExpense, closeModal } = getContext('state');
   let inputRef;
   $: selectInput(id);
   $: if (id === null) {
@@ -23,6 +23,7 @@
     }
     text = '';
     amount = 0;
+    return closeModal();
   };
 
   const selectInput = (id) => inputRef && inputRef.select && inputRef.select();

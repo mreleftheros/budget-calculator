@@ -15,7 +15,11 @@
 	$: expenseExists = expenseLen > 0;
 	$: expenseTotal = expenses.reduce((acc, curr) => acc + curr.amount, 0);
 	$: id = expenseLen === 0 ? 0 : Math.max(...expenses.map(e => e.id)) + 1;
-	$: edit && window.scrollTo(0, 0);
+	$: if (edit) {
+		openModal();
+	} else {
+		closeModal();
+	}
 	$: setStorageExpenses(expenses);
 
 	const addExpense = (text, amount) => expenses = [{text, amount, id}, ...expenses];
@@ -35,6 +39,8 @@
 
 	const clearExpenses = () => expenses = [];
 
+	const openModal = () => modalShow = true;
+
 	const closeModal = () => modalShow = false;
 
 	setContext('state', {
@@ -42,7 +48,9 @@
 		deleteExpense,
 		editExpense,
 		cancelEditExpense,
-		updateExpense
+		updateExpense,
+		openModal,
+		closeModal
 	});
 </script>
 <Header />
